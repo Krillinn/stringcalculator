@@ -7,7 +7,7 @@ public class CalculatorTest {
 
 	public static void main(String args[]) {
       org.junit.runner.JUnitCore.main("is.ru.stringcalculator.CalculatorTest");
-    }
+       }
 
 	@Test
 	public void testEmptyString() {
@@ -37,5 +37,16 @@ public class CalculatorTest {
       @Test
         public void testDifferentDelimiters() {
         	assertEquals(3, Calculator.add("//;\n1;2") );
+        }
+
+       @Test
+        public void testThrowNegativeException() {
+        	try {
+        		Calculator.add("-1,2");
+        	}
+        	catch (RuntimeException ex){
+        		assertEquals("Negatives not allowed: -1", ex.getMessage() );
+
+		}
         }
 }

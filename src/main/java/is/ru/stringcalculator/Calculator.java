@@ -29,7 +29,12 @@ public class Calculator {
         private static int sum(String[] numbers) {
  	    	int total = 0;
             	for(String number : numbers) {
-		    total += toInt(number);
+			if(toInt(number) < 0) {
+	        		throw new RuntimeException("Negatives not allowed: " + number);
+	        	}
+	        	else {
+	        		total += toInt(number);
+	        	}
 	 	}
 		return total;
         }
