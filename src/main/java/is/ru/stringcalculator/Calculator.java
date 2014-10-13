@@ -6,6 +6,11 @@ public class Calculator {
 		if(text.equals("")){
 			return 0;
 		}
+        	else if (text.length() > 3 && text.substring(0, 2).equals("//") ) {
+        		String delimiter = text.substring(2, 3);
+        		text = (text.substring(4)).replaceAll(delimiter, ",") ;
+        		return sum(splitNumbers(text) );
+        	}
 		else if(text.contains(",") || text.contains("\n") ) {
 			return sum(splitNumbers(text));
 		}
