@@ -30,6 +30,9 @@ public class Calculator {
  	    	String negative = "";
 		int total = 0;
             	for(String number : numbers) {
+	        	if(toInt(number) > 1000) {
+	        	return 2;
+	        }
 			if(toInt(number) < 0) {
 	        		negative += (number + ",");
 	        	}
