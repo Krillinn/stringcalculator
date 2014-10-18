@@ -64,4 +64,9 @@ public class CalculatorTest {
         public void testNoneGreaterThanThousand() {
         	assertEquals(2, Calculator.add("1001,2") );
         }
+
+       @Test
+        public void delimitersOfAnyLength() {
+        	assertEquals(6, Calculator.add("//[***]\n1***2***3") );
+        }
 }

@@ -7,7 +7,22 @@ public class Calculator {
 			return 0;
 		}
         	else if (text.length() > 3 && text.substring(0, 2).equals("//") ) {
-        		String delimiter = text.substring(2, 3);
+        		if(text.substring(2, 3).equals("[")) {	
+        		    	String delimiter = (text.substring(text.indexOf("["), text.indexOf("\n")));
+        		    	text = (text.substring(text.indexOf("\n") + 1));
+        		    	while(delimiter.contains("[")) {
+        		    		String singleDelimiter = "";
+        		    		singleDelimiter = (delimiter.substring(delimiter.indexOf("[") + 1, delimiter.indexOf("]")));
+        		    		delimiter = delimiter.substring(delimiter.indexOf("]") + 1);
+        		    		String endDelimenator = "";
+        		    		for(int i = 0; i< singleDelimiter.length(); i++) {
+        		    			endDelimenator += "\\" +  singleDelimiter.charAt(i);
+        		    		}
+        		    		text = text.replaceAll(endDelimenator, ",");
+        		    	}
+        		    	return sum(splitNumbers(text));
+			}
+			String delimiter = text.substring(2, 3);
         		text = (text.substring(4)).replaceAll(delimiter, ",") ;
         		return sum(splitNumbers(text) );
         	}
